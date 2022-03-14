@@ -1,9 +1,15 @@
 this will be used to got the pseudo stuff done
 
+// holds the visual stuff
 Input_List = []
+// holds the more complex information
 Input Type = []
+//holds something...
 Section Type = []
+//exchange rate
 Exchange Rate = []
+
+// therse are temporary information
 Section = "..."
 section units = []
 Current Section Type = 0
@@ -19,7 +25,10 @@ if C section type is 0;
   add input to section // "1" + "2" = "12"
 
 units
-if section type is 0
+change C section unit to C section unit + 1 
 
 methods
-if section type is 0
+append C section type into input list and input type
+reset C section type to 0
+append C selection unit onto input list and input type and section type
+append method onto input list, input type

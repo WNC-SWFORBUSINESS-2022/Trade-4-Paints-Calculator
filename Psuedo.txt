@@ -5,7 +5,9 @@ Input Type = []
 Section Type = []
 Exchange Rate = []
 Section = "..."
+section units = []
 Current Section Type = 0
+current section unit = 0
 
 //number = 1, + - * % = 2 3 4 5, units = 6 +
 // 0 is nill, will be used to what ever the fug it's for
@@ -14,10 +16,10 @@ input: numbers, methods, mesurement units
 
 numbers
 if C section type is 0;
-  add section
-
-methods
-if section type is 0
+  add input to section // "1" + "2" = "12"
 
 units
+if section type is 0
+
+methods
 if section type is 0

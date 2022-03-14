@@ -1,0 +1,23 @@
+this will be used to got the pseudo stuff done
+
+Input_List = []
+Input Type = []
+Section Type = []
+Exchange Rate = []
+Section = "..."
+Current Section Type = 0
+
+//number = 1, + - * % = 2 3 4 5, units = 6 +
+// 0 is nill, will be used to what ever the fug it's for
+
+input: numbers, methods, mesurement units
+
+numbers
+if C section type is 0;
+  add section
+
+methods
+if section type is 0
+
+units
+if section type is 0

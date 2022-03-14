@@ -11,12 +11,17 @@ using System.Windows.Forms;
 // holds the visual stuff
 List<string> Input_List = new List<string>(); // use biger version
 // holds the more complex information
-int[] Input_Type = new int[5];
+List<string> Input_Type = new List<string>();
 //holds something...
-Section_Type = [];
+List<string> Section_Type = new List<string>();
 //exchange rate
-Exchange_Rate = [];
+List<string> Exchange_Rate = new List<string>();
 
+// therse are temporary information
+string Section = "";
+List<string> Section_Units;
+int Current_Section_Type = 0;
+int Current_Section_Unit = 0;
 namespace Paint_Calculator
 {
     public partial class Form1 : Form
@@ -28,7 +33,16 @@ namespace Paint_Calculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (int Current_Section_Type != 0)
+            {
+                Section_Type.append(Curent_Section_Type);
+                Section == Section + "1";
+                Section_Type = 1
+            }
+            else
+            {
+            Section == Section + "1";
+            }
         }
     }
 }

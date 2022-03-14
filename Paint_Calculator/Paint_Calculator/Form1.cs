@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // holds the visual stuff
-//List<string> Input_List = new List<string>(); // use biger version
+List<string> Input_List = new List<string>(); // use biger version
 // holds the more complex information
 int[] Input_Type = new int[5];
 //holds something...

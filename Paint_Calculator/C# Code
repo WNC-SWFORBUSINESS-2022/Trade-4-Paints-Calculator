@@ -1,0 +1,75 @@
+List<int> Input_Type = new List<int>() {1}; // Holds the more complex information: numbers = 0, method = 1, Unit = 2; can then be used for visual translation
+
+List<int> Input_Numbers = new List<int>() {1}; // Holds the visual stuff
+List<int> Input_Units = new List<int>() {1}; // Holds more specific information for Units (0 - 3)
+List<int> Input_Methods = new List<int>() {1}; // Holds more specific information for Methods(0 - 3)
+
+
+int Section = 0; // Numbers and Methods fight for this variable
+
+// ram
+int Current_Section_Type = 0 ;// Numbers = 0, Methods = 1
+int Current_Section_Unit = 0; // (0 - 3)
+
+//Library
+string[]Unit_Values = {"mm","cm","m","km"};
+int[] Exchange_Rate = {1000, 100, 1, 1000};
+string[] L_Methods = {"+","-","*","/"};
+
+int Repeat = 0;
+
+public static int Join_Number(int x, int y)
+{
+    return Convert.ToInt32(Convert.ToString(x) + Convert.ToString(y));
+}
+
+public int Number(int x)
+{
+	if (Current_Section_Type == 1) // Doesn't like Numbers
+	{
+		Input_Numbers.Add(Section); // Adds Method to the visual list
+    	Input_Type.Add(1); // Adds Method to type list be fore replacing it with Number type
+    	Input_Methods.Add(Section); // Adds the method to the Method list
+	}
+  	else
+	{
+    	Section = Join_Number (Section, x); // inputs number;
+	}
+	// Run update for text box
+}
+
+public int Method(int x)
+{
+ 	if(Current_Section_Type == 0) // Doesn't like Methods
+	{
+    	Input_List.Add(Section); // add numbers to the visual list
+    	Input_Type.Add(0); // add numbers to type list be fore replacing it with method type
+
+    	Input_List.Add(Current_Section_Unit); // Adds the visual unit onto the visual list
+    	Input_Type.Add(2); // Adds the type to the list
+    	Input_Units.Add(Current_Section_Unit); // adds the specific unit to the list
+    
+    	Current_Section_Type = 1; // Finally does the Method
+    	Section = (x - 10);
+	}
+  	else
+	{
+    Section = (x - 10);
+    
+def Unit(x):
+  Current_Section_Unit = (x - 14)
+
+while (Repeat == 0):
+  User_Input = input()
+  User_Input = int(User_Input)
+  if (0 <= User_Input < 10):
+    Number(User_Input)
+  elif (10 <= User_Input < 14):
+    Method(User_Input)
+  elif (14 <= User_Input < 17):
+    Unit(User_Input)
+  elif (User_Input == 18):
+    Repeat = 1
+  else:
+    print("Enter Correct Info")
+  print(Input_List)

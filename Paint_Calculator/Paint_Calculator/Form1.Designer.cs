@@ -268,6 +268,7 @@ namespace Paint_Calculator
             this.button18.TabIndex = 19;
             this.button18.Text = "Enter";
             this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // textBox3
             // 

@@ -49,6 +49,7 @@ namespace Paint_Calculator
             else if (Decimal_Enable == true)
             {
                 Section = Double.Parse(Section.ToString() + '.' + x.ToString());
+                Decimal_Enable = false;
                 textBox2.Text = Section.ToString();
             }
             else
@@ -252,6 +253,12 @@ namespace Paint_Calculator
 
             Section = 0;
             Current_Section_Type = 0;
+        }
+
+        // The actuial Calculation...
+        private void button18_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

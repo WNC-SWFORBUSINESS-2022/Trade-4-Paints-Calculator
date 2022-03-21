@@ -13,6 +13,7 @@ namespace Paint_Calculator
 {
     public partial class Form1 : Form
     {
+        #region Variables
         List<int> Input_Type = new List<int>(); // Holds the more complex information: numbers = 0, method = 1, Unit = 2, Calculating = 3; can then be used for visual translation
 
         List<Double> Input_Numbers = new List<Double>(); // Holds the Numeric values
@@ -31,15 +32,16 @@ namespace Paint_Calculator
 
         int Cycle = 0; // Cycles what Unit the user wants
         bool Decimal_Enable = false;
+        #endregion
 
         #region Functions
-        public void Number(Double x)
+            public void Number(Double x)
         {
             if (Current_Section_Type == 1) // Doesn't like Numbers
             {
                 Input_Type.Add(1); // Adds Operator to type list be fore replacing it with Number type
                 Input_Operators.Add(Section); // Adds the Operator to the Operator list
-                
+
                 Current_Section_Type = 0;
                 Section = x;
 
@@ -59,36 +61,37 @@ namespace Paint_Calculator
             }
         }
 
-        public void Operation(int x)
-        {
-            if (Current_Section_Type == 0) // Doesn't like Operators
+            public void Operation(int x)
             {
-                Input_Type.Add(0); // add numbers to type list be fore replacing it with Operator type
-                Input_Numbers.Add(Section); // add numbers to the visual list
-                
-                Input_Type.Add(2); // Adds the Unit type to the list
-                Input_Units.Add(Current_Section_Unit); // adds the specific unit to the list
+                if (Current_Section_Type == 0) // Doesn't like Operators
+                {
+                    Input_Type.Add(0); // add numbers to type list be fore replacing it with Operator type
+                    Input_Numbers.Add(Section); // add numbers to the visual list
 
-                Current_Section_Type = 1; // Finally does the Operator
-                Section = (x);
-                textBox2.Text = L_Operators[Convert.ToInt32(Section)];
+                    Input_Type.Add(2); // Adds the Unit type to the list
+                    Input_Units.Add(Current_Section_Unit); // adds the specific unit to the list
 
-                textBox1_Update();
+                    Current_Section_Type = 1; // Finally does the Operator
+                    Section = (x);
+                    textBox2.Text = L_Operators[Convert.ToInt32(Section)];
+
+                    textBox1_Update();
+                }
+                else
+                {
+                    Section = (x);
+                    textBox2.Text = L_Operators[Convert.ToInt32(Section)];
+                }
             }
-            else
+
+            public void Unit(int x)
             {
-                Section = (x);
-                textBox2.Text = L_Operators[Convert.ToInt32(Section)];
+                Current_Section_Unit = x;
+                button11.Text = Unit_Values[x];
             }
-        }
 
-        public void Unit(int x)
-        {
-            Current_Section_Unit = x;
-            button11.Text = Unit_Values[x];
-        }
 
-        public void textBox1_Update()
+            public void textBox1_Update()
         {
             int Length = Input_Type.Count(); // Calculate the length of the list
 
@@ -125,11 +128,24 @@ namespace Paint_Calculator
             textBox1.Text = Display;
         }
 
+            public void Reset_Values()
+        {
+            Input_Type.Clear();
+
+            Input_Numbers.Clear();
+            Input_Units.Clear();
+            Input_Operators.Clear();
+
+            Section = 0;
+            Current_Section_Type = 0;
+        }
         #endregion
+
+        //ignore for now
         public Form1()
         {
             InitializeComponent();
-        } //ignore for now
+        } 
         
         // Holds the main numerical inputs (Includes Decimal)
         #region Number Input
@@ -245,14 +261,7 @@ namespace Paint_Calculator
         // Reset (resets averything before User Input (Ignoring Unit))
         private void button17_Click(object sender, EventArgs e)
         {
-            Input_Type.Clear();
-
-            Input_Numbers.Clear();
-            Input_Units.Clear();
-            Input_Operators.Clear();
-
-            Section = 0;
-            Current_Section_Type = 0;
+            Reset_Values();
         }
 
         // The actuial Calculation...
@@ -261,9 +270,29 @@ namespace Paint_Calculator
             bool Inital_Calculation = true;
             Double Results = 0;
 
+            // Adds the inputed number (if there is any)
+            if (Current_Section_Type == 0) // Number
+            {
+                Input_Type.Add(0); // add numbers to type list be fore replacing it with Operator type
+                Input_Numbers.Add(Section); // add numbers to the visual list
+
+                Input_Type.Add(2); // Adds the Unit type to the list
+                Input_Units.Add(Current_Section_Unit); // adds the specific unit to the list
+            }
+
+            // Converting the number
+            for (int i = 0; i <= Input_Numbers.Count; i++)
+            {
+                switch(Input_Units[i])
+                {
+                    case 0:
+                        Input_Numbers[i] = 
+                        break;
+                }
+            }
 
 
-            for (int i = 0; i <= Input_Operators.Count ; i++) // counting how many times it needs to calculate
+                for (int i = 0; i <= Input_Operators.Count ; i++) // counting how many times it needs to calculate
             {
                 if (Inital_Calculation == true)
                 {
@@ -278,7 +307,7 @@ namespace Paint_Calculator
 
             }
 
-
+            Reset_Values();
             textBox3.Text = Results.ToString();
         }
     }

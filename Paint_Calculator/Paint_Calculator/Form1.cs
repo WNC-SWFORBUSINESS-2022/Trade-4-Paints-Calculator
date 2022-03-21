@@ -13,7 +13,7 @@ namespace Paint_Calculator
 {
     public partial class Form1 : Form
     {
-        List<int> Input_Type = new List<int>(); // Holds the more complex information: numbers = 0, method = 1, Unit = 2; can then be used for visual translation
+        List<int> Input_Type = new List<int>(); // Holds the more complex information: numbers = 0, method = 1, Unit = 2, Calculating = 3; can then be used for visual translation
 
         List<Double> Input_Numbers = new List<Double>(); // Holds the Numeric values
         List<int> Input_Units = new List<int>(); // Holds more specific information for Units (0 - 3)
@@ -26,9 +26,8 @@ namespace Paint_Calculator
         int Current_Section_Unit = 0; // (0 - 3)
 
         //Library
-        string[] Unit_Values = { "mm", "cm", "m", "km" };
+        string[] Unit_Values = { "mm", "cm", "m", "km" }; // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
         string[] L_Operators = { "+", "-", "*", "/" };
-        int[] Exchange_Rate = { 1000, 100, 1, 1000 };
 
         int Cycle = 0; // Cycles what Unit the user wants
         bool Decimal_Enable = false;
@@ -45,6 +44,7 @@ namespace Paint_Calculator
                 Section = x;
 
                 textBox1_Update(); // Run update for text box
+                textBox2.Text = Section.ToString();
             }
             else if (Decimal_Enable == true)
             {
@@ -258,7 +258,28 @@ namespace Paint_Calculator
         // The actuial Calculation...
         private void button18_Click(object sender, EventArgs e)
         {
+            bool Inital_Calculation = true;
+            Double Results = 0;
 
+
+
+            for (int i = 0; i <= Input_Operators.Count ; i++) // counting how many times it needs to calculate
+            {
+                if (Inital_Calculation == true)
+                {
+                    Inital_Calculation = false;
+
+                    Results = Input_Numbers[i] + Input_Numbers[i +1];
+                }
+                else
+                {
+                    Results = Results + Input_Numbers[i + 1];
+                }
+
+            }
+
+
+            textBox3.Text = Results.ToString();
         }
     }
 }

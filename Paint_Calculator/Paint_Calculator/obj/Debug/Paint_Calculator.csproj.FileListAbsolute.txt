@@ -9,3 +9,13 @@ C:\Users\Peppy10003\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculat
 C:\Users\Peppy10003\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\bin\Debug\Paint_Calculator.pdb
 C:\Users\Peppy10003\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\obj\Debug\Paint_Calculator.exe
 C:\Users\Peppy10003\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\obj\Debug\Paint_Calculator.pdb
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\bin\Debug\Paint_Calculator.exe.config
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\bin\Debug\Paint_Calculator.exe
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\bin\Debug\Paint_Calculator.pdb
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\obj\Debug\Paint_Calculator.csproj.AssemblyReference.cache
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\obj\Debug\Paint_Calculator.Form1.resources
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\obj\Debug\Paint_Calculator.Properties.Resources.resources
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\obj\Debug\Paint_Calculator.csproj.GenerateResource.cache
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\obj\Debug\Paint_Calculator.csproj.CoreCompileInputs.cache
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\obj\Debug\Paint_Calculator.exe
+C:\Users\TSA19000854\Documents\GitHub\Trade-4-Paints-Calculator-ET\Paint_Calculator\Paint_Calculator\obj\Debug\Paint_Calculator.pdb

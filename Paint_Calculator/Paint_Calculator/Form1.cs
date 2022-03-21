@@ -27,7 +27,7 @@ namespace Paint_Calculator
         int Current_Section_Unit = 0; // (0 - 3)
 
         //Library
-        string[] Unit_Values = { "mm", "cm", "m", "km" }; // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
+        string[] Unit_Values = { "mm", "cm", "m", "km", "miles" }; // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
         string[] L_Operators = { "+", "-", "*", "/" };
 
         int Cycle = 0; // Cycles what Unit the user wants
@@ -219,7 +219,7 @@ namespace Paint_Calculator
         // Change Unit
         private void button11_Click(object sender, EventArgs e)
         {
-            if (Cycle == 3)
+            if (Cycle == Unit_Values.Count())
             {
                 Cycle = 0;
             }
@@ -281,12 +281,27 @@ namespace Paint_Calculator
             }
 
             // Converting the number
-            for (int i = 0; i <= Input_Numbers.Count; i++)
+            for (int i = 0; i <= Input_Numbers.Count; i++) // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
             {
-                switch(Input_Units[i])
+                switch(Input_Units[i]) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
                 {
                     case 0:
-                        Input_Numbers[i] = 
+                        Input_Numbers[i] = Input_Numbers[i] / 1000; // millimeter to meter
+                        break;
+                    case 1:
+                        Input_Numbers[i] = Input_Numbers[i] / 100; // centimeter to meter
+                        break;
+                    case 2:
+                        Input_Numbers[i] = Input_Numbers[i] * 1; // meter to meter 
+                        break;
+                    case 3:
+                        Input_Numbers[i] = Input_Numbers[i] * 1000; // kilometer to meter
+                        break;
+                    case 4:
+                        Input_Numbers[i] = Input_Numbers[i] * 1609.34; // mile to meter
+                        break;
+                    default:
+                        //add text to tell the user to input something :P
                         break;
                 }
             }

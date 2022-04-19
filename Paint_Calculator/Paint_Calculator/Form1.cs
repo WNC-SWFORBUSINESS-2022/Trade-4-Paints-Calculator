@@ -32,10 +32,12 @@ namespace Paint_Calculator
 
         int Cycle = 0; // Cycles what Unit the user wants
         bool Decimal_Enable = false;
+
+        Double Var_Litres = 0;
         #endregion
 
         #region Functions
-            public void Number(Double x)
+        public void Number(Double x)
         {
             if (Current_Section_Type == 1) // Doesn't like Numbers
             {
@@ -281,12 +283,12 @@ namespace Paint_Calculator
             }
 
             // Converting the number
-            for (int i = 0; i <= Input_Numbers.Count; i++) // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
+            for (int i = 0; i <= (Input_Units.Count - 1); i++) // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
             {
                 switch(Input_Units[i]) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
                 {
                     case 0:
-                        Input_Numbers[i] = Input_Numbers[i] / 1000; // millimeter to meter
+                        //Input_Numbers[i] = Input_Numbers[i] / 1000; // millimeter to meter
                         break;
                     case 1:
                         Input_Numbers[i] = Input_Numbers[i] / 100; // centimeter to meter
@@ -307,7 +309,7 @@ namespace Paint_Calculator
             }
 
 
-                for (int i = 0; i <= Input_Operators.Count ; i++) // counting how many times it needs to calculate
+            for (int i = 0; i <= (Input_Operators.Count - 1) ; i++) // counting how many times it needs to calculate
             {
                 if (Inital_Calculation == true)
                 {
@@ -324,6 +326,47 @@ namespace Paint_Calculator
 
             Reset_Values();
             textBox3.Text = Results.ToString();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (textBox4.Text = null)
+            {
+                //send error
+            }
+            else
+            {
+                Var_Litres = textBox4.Text / 2.6; // the number of litres needed
+                while (empty == false)
+                {
+                    if (Var_Litres > 5)
+                    {
+                        //get big paint
+                    }
+                    else if (Var_Litres < 5)
+                    {
+                        if (Var_Litres > 2.5)
+                        {
+                            // get big paint
+                        }
+                        else if (Var_Litres < 2.5)
+                        {
+                            if (Var_Litres == 0)
+                            {
+                                //stop calculating
+                            }
+                            else
+                            {
+                                //get small paint
+                            }
+                        }
+
+                    }
+                }
+
+                Price = 
+
+            }
         }
     }
 }

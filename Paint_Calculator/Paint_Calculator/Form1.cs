@@ -34,6 +34,15 @@ namespace Paint_Calculator
         bool Decimal_Enable = false;
 
         Double Var_Litres = 0;
+        
+        //Recipt
+        String Company_Name = "Trade4Paint";
+        String Company_Address = "Mansfield, Hamilton Way"
+        String Small_Paint;
+        String Big_Paint;
+        String Total_Cost;
+        String Total_Cost_VAT;
+        String Date;
         #endregion
 
         #region Functions
@@ -341,12 +350,14 @@ namespace Paint_Calculator
                 {
                     if (Var_Litres > 5)
                     {
+                        Big_Paint_Counter
                         //get big paint
                     }
                     else if (Var_Litres < 5)
                     {
                         if (Var_Litres > 2.5)
                         {
+                            Big_Paint_Counter
                             // get big paint
                         }
                         else if (Var_Litres < 2.5)
@@ -357,15 +368,20 @@ namespace Paint_Calculator
                             }
                             else
                             {
+                                Small_Paint_Counter
                                 //get small paint
                             }
                         }
 
                     }
                 }
-
-                Price = 
-
+                Small_Paint_Cost = Small_Paint_Counter * 18.99;
+                Big_Paint_Cost = Big_Paint_Counter * 28;
+                
+                Small_Paint =
+                
+                Total_Cost = Big_Paint_Cost + Small_Paint_Cost;
+                MessageBox.Show(Company_Name + "\n" + Company_Address + "\n" + Small_Paint + "\n" + Big_Paint + "\n" + Total_Cost + "\n" + Total_Cost_VAT + "\n" + Date , title);
             }
         }
     }

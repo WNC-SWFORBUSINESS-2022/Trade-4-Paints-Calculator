@@ -50,8 +50,11 @@ namespace Paint_Calculator
             this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button19 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -273,27 +276,60 @@ namespace Paint_Calculator
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Javanese Text", 11F);
-            this.textBox3.Location = new System.Drawing.Point(12, 316);
+            this.textBox3.Location = new System.Drawing.Point(70, 316);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(394, 41);
+            this.textBox3.Size = new System.Drawing.Size(95, 41);
             this.textBox3.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 319);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 34);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Total:";
+            // 
+            // button19
+            // 
+            this.button19.Font = new System.Drawing.Font("Javanese Text", 11F);
+            this.button19.Location = new System.Drawing.Point(412, 316);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(94, 41);
+            this.button19.TabIndex = 23;
+            this.button19.Text = "Calculate";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(171, 319);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 34);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Insert surface area:";
             // 
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Javanese Text", 11F);
-            this.textBox4.Location = new System.Drawing.Point(412, 316);
+            this.textBox4.Location = new System.Drawing.Point(311, 316);
             this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(94, 41);
-            this.textBox4.TabIndex = 21;
+            this.textBox4.Size = new System.Drawing.Size(95, 41);
+            this.textBox4.TabIndex = 25;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 370);
+            this.ClientSize = new System.Drawing.Size(515, 369);
             this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button19);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.button17);
@@ -345,8 +381,11 @@ namespace Paint_Calculator
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 

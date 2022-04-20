@@ -403,27 +403,27 @@ namespace Paint_Calculator
             }
             else
             {
-                Var_Litres = Convert.ToDouble(textBox4.Text) / 2.6; // the number of litres needed
+                Var_Litres = Convert.ToDouble(textBox4.Text) / 1.625; // the number of litres needed
                 Str_Litres = "Litres = " + Var_Litres.ToString() + "L";
 
                 while (Empty_Check == false)
                 {
-                    if (Var_Litres > 5)
+                    if (Var_Litres > 8)
                     {
                         Big_Paint_Counter++;
                         Var_Litres = Var_Litres - 5;
                         //get big paint
                     }
-                    else if (Var_Litres < 5)
+                    else if (Var_Litres < 8)
                     {
-                        if (Var_Litres > 2.5)
+                        if (Var_Litres > 4)
                         {
                             Big_Paint_Counter++;
                             Var_Litres = 0;
                             Empty_Check = true;
                             // get big paint
                         }
-                        else if (Var_Litres < 2.5)
+                        else if (Var_Litres < 4)
                         {
                             if (Var_Litres == 0)
                             {

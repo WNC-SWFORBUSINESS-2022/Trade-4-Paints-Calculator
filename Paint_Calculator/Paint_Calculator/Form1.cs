@@ -307,7 +307,7 @@ namespace Paint_Calculator
                 switch(Input_Units[i]) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
                 {
                     case 0:
-                        //Input_Numbers[i] = Input_Numbers[i] / 1000; // millimeter to meter
+                        Input_Numbers[i] = Input_Numbers[i] / 1000; // millimeter to meter
                         break;
                     case 1:
                         Input_Numbers[i] = Input_Numbers[i] / 100; // centimeter to meter
@@ -411,6 +411,7 @@ namespace Paint_Calculator
                     if (Var_Litres > 5)
                     {
                         Big_Paint_Counter++;
+                        Var_Litres = Var_Litres - 5;
                         //get big paint
                     }
                     else if (Var_Litres < 5)

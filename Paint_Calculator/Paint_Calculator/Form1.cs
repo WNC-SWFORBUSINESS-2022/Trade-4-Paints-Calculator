@@ -32,17 +32,25 @@ namespace Paint_Calculator
 
         int Cycle = 0; // Cycles what Unit the user wants
         bool Decimal_Enable = false;
-
-        Double Var_Litres = 0;
         
+        //Calculation for paint
+        bool Empty_Check = false;
+        Double Var_Litres = 0;
+        int Big_Paint_Counter = 0;
+        int Small_Paint_Counter = 0;
+        Double Small_Paint_Cost;
+        Double Big_Paint_Cost;
+
         //Recipt
         String Company_Name = "Trade4Paint";
-        String Company_Address = "Mansfield, Hamilton Way"
+        String Company_Address = "Mansfield, Hamilton Way";
         String Small_Paint;
         String Big_Paint;
-        String Total_Cost;
-        String Total_Cost_VAT;
-        String Date;
+        Double Total_Cost;
+        String String_Cost;
+        Double Total_Cost_VAT;
+        String String_VAT;
+        String Title = "Recipt";
         #endregion
 
         #region Functions
@@ -339,49 +347,69 @@ namespace Paint_Calculator
 
         private void button19_Click(object sender, EventArgs e)
         {
-            if (textBox4.Text = null)
+            Empty_Check = false;
+            Var_Litres = 0;
+            Big_Paint_Counter = 0;
+            Small_Paint_Counter = 0;
+
+            Small_Paint_Cost = 0;
+            Big_Paint_Cost = 0;
+            
+            if (String.IsNullOrEmpty(textBox4.Text))
             {
                 //send error
+                MessageBox.Show("Please Insert a Value");
             }
             else
             {
-                Var_Litres = textBox4.Text / 2.6; // the number of litres needed
-                while (empty == false)
+                Var_Litres = Int32.Parse(textBox4.Text) / 2.6; // the number of litres needed
+                while (Empty_Check == false)
                 {
                     if (Var_Litres > 5)
                     {
-                        Big_Paint_Counter
+                        Big_Paint_Counter++;
                         //get big paint
                     }
                     else if (Var_Litres < 5)
                     {
                         if (Var_Litres > 2.5)
                         {
-                            Big_Paint_Counter
+                            Big_Paint_Counter++;
+                            Var_Litres = 0;
+                            Empty_Check = true;
                             // get big paint
                         }
                         else if (Var_Litres < 2.5)
                         {
                             if (Var_Litres == 0)
                             {
-                                //stop calculating
+                                Empty_Check = true; //stop calculating
                             }
                             else
                             {
-                                Small_Paint_Counter
-                                //get small paint
+                                Small_Paint_Counter++; //get small paint
+                                Var_Litres = 0;
+                                Empty_Check = true;
                             }
                         }
 
                     }
+
+                    Small_Paint_Cost = Small_Paint_Counter * 18.99;
+                    Big_Paint_Cost = Big_Paint_Counter * 28;
+
+                    Small_Paint = "Small Paint X " + Small_Paint_Counter.ToString();
+                    Big_Paint = "Big Paint x " + Big_Paint_Counter.ToString();
+
+                    Total_Cost = Big_Paint_Cost + Small_Paint_Cost;
+                    String_Cost = "Total Cost = £" + Total_Cost.ToString();
+
+                    Total_Cost_VAT = Total_Cost * 1.05;
+                    String_VAT = "Total Cost With VAT = £" + Total_Cost_VAT.ToString();
+
+                    DateTime Date = DateTime.Today;
+                    MessageBox.Show(Company_Name + "\n" + Company_Address + "\n" + Small_Paint + "\n" + Big_Paint + "\n" + String_Cost + "\n" + String_VAT + "\n" + Date , Title);
                 }
-                Small_Paint_Cost = Small_Paint_Counter * 18.99;
-                Big_Paint_Cost = Big_Paint_Counter * 28;
-                
-                Small_Paint =
-                
-                Total_Cost = Big_Paint_Cost + Small_Paint_Cost;
-                MessageBox.Show(Company_Name + "\n" + Company_Address + "\n" + Small_Paint + "\n" + Big_Paint + "\n" + Total_Cost + "\n" + Total_Cost_VAT + "\n" + Date , title);
             }
         }
     }

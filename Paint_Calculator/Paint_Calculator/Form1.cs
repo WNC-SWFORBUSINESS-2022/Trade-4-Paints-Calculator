@@ -36,6 +36,7 @@ namespace Paint_Calculator
         //Calculation for paint
         bool Empty_Check = false;
         Double Var_Litres = 0;
+        String Str_Litres;
         int Big_Paint_Counter = 0;
         int Small_Paint_Counter = 0;
         Double Small_Paint_Cost;
@@ -65,52 +66,53 @@ namespace Paint_Calculator
                 Section = x;
 
                 textBox1_Update(); // Run update for text box
-                textBox2.Text = Section.ToString();
+                textBox2.Text = Section.ToString() + Unit_Values[Current_Section_Unit];
             }
             else if (Decimal_Enable == true)
             {
                 Section = Double.Parse(Section.ToString() + '.' + x.ToString());
                 Decimal_Enable = false;
-                textBox2.Text = Section.ToString();
+                textBox2.Text = Section.ToString() + Unit_Values[Current_Section_Unit];
             }
             else
             {
                 Section = Double.Parse(Section.ToString() + x.ToString()); // inputs number;
-                textBox2.Text = Section.ToString();
+                textBox2.Text = Section.ToString() + Unit_Values[Current_Section_Unit];
             }
         }
 
-            public void Operation(int x)
+        public void Operation(int x)
+        {
+            if (Current_Section_Type == 0) // Doesn't like Operators
             {
-                if (Current_Section_Type == 0) // Doesn't like Operators
-                {
-                    Input_Type.Add(0); // add numbers to type list be fore replacing it with Operator type
-                    Input_Numbers.Add(Section); // add numbers to the visual list
+                Input_Type.Add(0); // add numbers to type list be fore replacing it with Operator type
+                Input_Numbers.Add(Section); // add numbers to the visual list
 
-                    Input_Type.Add(2); // Adds the Unit type to the list
-                    Input_Units.Add(Current_Section_Unit); // adds the specific unit to the list
+                Input_Type.Add(2); // Adds the Unit type to the list
+                Input_Units.Add(Current_Section_Unit); // adds the specific unit to the list
 
-                    Current_Section_Type = 1; // Finally does the Operator
-                    Section = (x);
-                    textBox2.Text = L_Operators[Convert.ToInt32(Section)];
+                Current_Section_Type = 1; // Finally does the Operator
+                Section = (x);
+                textBox2.Text = L_Operators[Convert.ToInt32(Section)];
 
-                    textBox1_Update();
-                }
-                else
-                {
-                    Section = (x);
-                    textBox2.Text = L_Operators[Convert.ToInt32(Section)];
-                }
+                textBox1_Update();
             }
-
-            public void Unit(int x)
+            else
             {
-                Current_Section_Unit = x;
-                button11.Text = Unit_Values[x];
+                Section = (x);
+                textBox2.Text = L_Operators[Convert.ToInt32(Section)];
             }
+        }
+
+        public void Unit(int x)
+        {
+            Current_Section_Unit = x;
+            button11.Text = Unit_Values[x];
+            textBox2.Text = Section.ToString() + Unit_Values[Current_Section_Unit];
+        }
 
 
-            public void textBox1_Update()
+        public void textBox1_Update()
         {
             int Length = Input_Type.Count(); // Calculate the length of the list
 
@@ -119,7 +121,7 @@ namespace Paint_Calculator
             int Number_Count = 0;
             int Operator_Count = 0;
             int Unit_Count = 0;
-
+            
             for (int i = 0; i < Length; i++)
             {
                 switch (Input_Type[i])
@@ -128,12 +130,12 @@ namespace Paint_Calculator
                         Display = Display + Input_Numbers[Number_Count];
                         Number_Count = Number_Count + 1;
                         break;
-
+                                             
                     case 1: // Operators
                         Display = Display + L_Operators[Convert.ToInt32(Input_Operators[Operator_Count])];
                         Operator_Count = Operator_Count + 1;
                         break;
-
+                                             
                     case 2: // Units
                         Display = Display + Unit_Values[Convert.ToInt32(Input_Units[Unit_Count])];
                         Unit_Count = Unit_Count + 1;
@@ -147,10 +149,10 @@ namespace Paint_Calculator
             textBox1.Text = Display;
         }
 
-            public void Reset_Values()
+        public void Reset_Values()
         {
             Input_Type.Clear();
-
+            
             Input_Numbers.Clear();
             Input_Units.Clear();
             Input_Operators.Clear();
@@ -238,7 +240,7 @@ namespace Paint_Calculator
         // Change Unit
         private void button11_Click(object sender, EventArgs e)
         {
-            if (Cycle == Unit_Values.Count())
+            if (Cycle == Unit_Values.Count() - 1)
             {
                 Cycle = 0;
             }
@@ -326,23 +328,62 @@ namespace Paint_Calculator
             }
 
 
-            for (int i = 0; i <= (Input_Operators.Count - 1) ; i++) // counting how many times it needs to calculate
+            for (int i = 0; i <= (Input_Operators.Count - 1); i++) // counting how many times it needs to calculate
             {
-                if (Inital_Calculation == true)
+                switch (Input_Operators[i])
                 {
-                    Inital_Calculation = false;
+                    case 0: // +
+                        if (Inital_Calculation == true) // The Inital Calculation Is Special
+                        {
+                            Inital_Calculation = false;
 
-                    Results = Input_Numbers[i] + Input_Numbers[i +1];
-                }
-                else
-                {
-                    Results = Results + Input_Numbers[i + 1];
-                }
+                            Results = Input_Numbers[i] + Input_Numbers[i + 1];
+                        }
+                        else
+                        {
+                            Results = Results + Input_Numbers[i + 1];
+                        }
+                        break;
+                    case 1: // -
+                        if (Inital_Calculation == true)
+                        {
+                            Inital_Calculation = false;
 
+                            Results = Input_Numbers[i] - Input_Numbers[i + 1];
+                        }
+                        else
+                        {
+                            Results = Results - Input_Numbers[i + 1];
+                        }
+                        break;
+                    case 2: // *
+                        if (Inital_Calculation == true)
+                        {
+                            Inital_Calculation = false;
+
+                            Results = Input_Numbers[i] * Input_Numbers[i + 1];
+                        }
+                        else
+                        {
+                            Results = Results * Input_Numbers[i + 1];
+                        }
+                        break;
+                    case 3: // %
+                        if (Inital_Calculation == true)
+                        {
+                            Inital_Calculation = false;
+
+                            Results = Input_Numbers[i] / Input_Numbers[i + 1];
+                        }
+                        else
+                        {
+                            Results = Results / Input_Numbers[i + 1];
+                        }
+                        break;
+                }
             }
-
             Reset_Values();
-            textBox3.Text = Results.ToString();
+            textBox3.Text = Results.ToString() + " m";
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -362,7 +403,9 @@ namespace Paint_Calculator
             }
             else
             {
-                Var_Litres = Int32.Parse(textBox4.Text) / 2.6; // the number of litres needed
+                Var_Litres = Convert.ToDouble(textBox4.Text) / 2.6; // the number of litres needed
+                Str_Litres = "Litres = " + Var_Litres.ToString() + "L";
+
                 while (Empty_Check == false)
                 {
                     if (Var_Litres > 5)
@@ -394,22 +437,29 @@ namespace Paint_Calculator
                         }
 
                     }
-
-                    Small_Paint_Cost = Small_Paint_Counter * 18.99;
-                    Big_Paint_Cost = Big_Paint_Counter * 28;
-
-                    Small_Paint = "Small Paint X " + Small_Paint_Counter.ToString();
-                    Big_Paint = "Big Paint x " + Big_Paint_Counter.ToString();
-
-                    Total_Cost = Big_Paint_Cost + Small_Paint_Cost;
-                    String_Cost = "Total Cost = £" + Total_Cost.ToString();
-
-                    Total_Cost_VAT = Total_Cost * 1.05;
-                    String_VAT = "Total Cost With VAT = £" + Total_Cost_VAT.ToString();
-
-                    DateTime Date = DateTime.Today;
-                    MessageBox.Show(Company_Name + "\n" + Company_Address + "\n" + Small_Paint + "\n" + Big_Paint + "\n" + String_Cost + "\n" + String_VAT + "\n" + Date , Title);
                 }
+
+                Small_Paint_Cost = Small_Paint_Counter * 18.99;
+                Big_Paint_Cost = Big_Paint_Counter * 28;
+
+                Small_Paint = "Small Paint X " + Small_Paint_Counter.ToString();
+                Big_Paint = "Big Paint x " + Big_Paint_Counter.ToString();
+
+                Total_Cost = Big_Paint_Cost + Small_Paint_Cost;
+                String_Cost = "Total Cost = £" + Total_Cost.ToString();
+
+                Total_Cost_VAT = Total_Cost * 1.05;
+                String_VAT = "Total Cost With VAT = £" + Total_Cost_VAT.ToString();
+
+                DateTime Date = DateTime.Today;
+                MessageBox.Show(Company_Name + "\n" + Company_Address + "\n" + Small_Paint + "\n" + Big_Paint + Str_Litres + "\n" + String_Cost + "\n" + String_VAT + "\n" + Date, Title);
+            }
+        }
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
             }
         }
     }

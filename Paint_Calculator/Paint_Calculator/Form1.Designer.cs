@@ -320,6 +320,7 @@ namespace Paint_Calculator
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(95, 41);
             this.textBox4.TabIndex = 25;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // Form1
             // 

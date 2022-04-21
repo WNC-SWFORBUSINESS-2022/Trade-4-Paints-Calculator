@@ -66,6 +66,12 @@ namespace Paint_Calculator
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.button20 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -358,16 +364,16 @@ namespace Paint_Calculator
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(512, 90);
+            this.label4.Location = new System.Drawing.Point(634, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 34);
+            this.label4.Size = new System.Drawing.Size(164, 34);
             this.label4.TabIndex = 28;
-            this.label4.Text = "Small Paint Price";
+            this.label4.Text = "Small Paint Trade Price";
             // 
             // textBox6
             // 
             this.textBox6.Font = new System.Drawing.Font("Javanese Text", 11F);
-            this.textBox6.Location = new System.Drawing.Point(518, 127);
+            this.textBox6.Location = new System.Drawing.Point(639, 46);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(95, 41);
             this.textBox6.TabIndex = 29;
@@ -376,7 +382,7 @@ namespace Paint_Calculator
             // textBox7
             // 
             this.textBox7.Font = new System.Drawing.Font("Javanese Text", 11F);
-            this.textBox7.Location = new System.Drawing.Point(640, 46);
+            this.textBox7.Location = new System.Drawing.Point(518, 127);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(95, 41);
             this.textBox7.TabIndex = 33;
@@ -388,15 +394,15 @@ namespace Paint_Calculator
             this.label5.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(634, 90);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 34);
+            this.label5.Size = new System.Drawing.Size(165, 34);
             this.label5.TabIndex = 32;
-            this.label5.Text = "Large Paint Price";
+            this.label5.Text = "Large Paint Trade Price";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(634, 9);
+            this.label6.Location = new System.Drawing.Point(512, 90);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(117, 34);
             this.label6.TabIndex = 31;
@@ -414,7 +420,7 @@ namespace Paint_Calculator
             // button20
             // 
             this.button20.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.Location = new System.Drawing.Point(579, 174);
+            this.button20.Location = new System.Drawing.Point(550, 265);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(94, 41);
             this.button20.TabIndex = 34;
@@ -426,18 +432,83 @@ namespace Paint_Calculator
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(496, 181);
+            this.pictureBox1.Location = new System.Drawing.Point(662, 181);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(265, 240);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(804, 90);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(159, 34);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Large Paint Dom Price";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Font = new System.Drawing.Font("Javanese Text", 11F);
+            this.textBox9.Location = new System.Drawing.Point(810, 124);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(95, 41);
+            this.textBox9.TabIndex = 38;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Font = new System.Drawing.Font("Javanese Text", 11F);
+            this.textBox10.Location = new System.Drawing.Point(810, 46);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(95, 41);
+            this.textBox10.TabIndex = 37;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(804, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(158, 34);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Small Paint Dom Price";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(525, 181);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(147, 44);
+            this.checkBox1.TabIndex = 40;
+            this.checkBox1.Text = "Enable Trade Price";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(559, 228);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 34);
+            this.label9.TabIndex = 41;
+            this.label9.Text = "Disabled";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 369);
+            this.ClientSize = new System.Drawing.Size(965, 369);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label5);
@@ -519,6 +590,12 @@ namespace Paint_Calculator
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label9;
     }
 }
 

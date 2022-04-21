@@ -44,9 +44,11 @@ namespace Paint_Calculator
         Double Big_Paint_Cost_Total;
 
         String Small_Paint_Size;
-        String Small_Paint_Cost;
+        String Small_Paint_Trade_Cost;
+        String Small_Paint_Dom_Cost;
         String Big_Paint_Size;
-        String Big_Paint_Cost;
+        String Big_Paint_Trade_Cost;
+        String Large_Paint_Dom_Cost;
 
         //Recipt
         String Company_Name = "Trade4Paint";
@@ -178,14 +180,20 @@ namespace Paint_Calculator
                 Small_Paint_Size = sr.ReadLine(); // loads up the txt document and saves them as diffrent var
                 textBox5.Text = Small_Paint_Size;
 
-                Small_Paint_Cost = sr.ReadLine();
-                textBox6.Text = Small_Paint_Cost;
+                Small_Paint_Trade_Cost = sr.ReadLine();
+                textBox6.Text = Small_Paint_Trade_Cost;
+
+                Small_Paint_Dom_Cost = sr.ReadLine();
+                textBox10.Text = Small_Paint_Dom_Cost;
 
                 Big_Paint_Size = sr.ReadLine();
                 textBox7.Text = Big_Paint_Size;
 
-                Big_Paint_Cost = sr.ReadLine();
-                textBox8.Text = Big_Paint_Cost;
+                Big_Paint_Trade_Cost = sr.ReadLine();
+                textBox8.Text = Big_Paint_Trade_Cost;
+
+                Large_Paint_Dom_Cost = sr.ReadLine();
+                textBox9.Text = Large_Paint_Dom_Cost;
             }
         } 
         
@@ -426,14 +434,20 @@ namespace Paint_Calculator
                 Small_Paint_Size = sr.ReadLine(); // loads up the txt document and saves them as diffrent var
                 textBox5.Text = Small_Paint_Size;
 
-                Small_Paint_Cost = sr.ReadLine();
-                textBox6.Text = Small_Paint_Cost;
+                Small_Paint_Trade_Cost = sr.ReadLine();
+                textBox6.Text = Small_Paint_Trade_Cost;
+
+                Small_Paint_Dom_Cost = sr.ReadLine();
+                textBox10.Text = Small_Paint_Dom_Cost;
 
                 Big_Paint_Size = sr.ReadLine();
                 textBox7.Text = Big_Paint_Size;
 
-                Big_Paint_Cost = sr.ReadLine();
-                textBox8.Text = Big_Paint_Cost;
+                Big_Paint_Trade_Cost = sr.ReadLine();
+                textBox8.Text = Big_Paint_Trade_Cost;
+
+                Large_Paint_Dom_Cost = sr.ReadLine();
+                textBox9.Text = Large_Paint_Dom_Cost;
             }
 
             if (String.IsNullOrEmpty(textBox4.Text))
@@ -480,10 +494,17 @@ namespace Paint_Calculator
                     }
                 }
 
-                
 
-                Small_Paint_Cost_Total = Small_Paint_Counter * Convert.ToDouble(Small_Paint_Cost);
-                Big_Paint_Cost_Total = Big_Paint_Counter * Convert.ToDouble(Small_Paint_Cost);
+                if (checkBox1.Checked)
+                {
+                    Small_Paint_Cost_Total = Small_Paint_Counter * Convert.ToDouble(Small_Paint_Trade_Cost);
+                    Big_Paint_Cost_Total = Big_Paint_Counter * Convert.ToDouble(Small_Paint_Trade_Cost);
+                }
+                else
+                {
+                    Small_Paint_Cost_Total = Small_Paint_Counter * Convert.ToDouble(Small_Paint_Dom_Cost);
+                    Big_Paint_Cost_Total = Big_Paint_Counter * Convert.ToDouble(Small_Paint_Dom_Cost);
+                }
 
                 Small_Paint = "Small Paint X " + Small_Paint_Counter.ToString();
                 Big_Paint = "Big Paint x " + Big_Paint_Counter.ToString();
@@ -491,7 +512,7 @@ namespace Paint_Calculator
                 Total_Cost = Big_Paint_Cost_Total + Small_Paint_Cost_Total;
                 String_Cost = "Total Cost = £" + Total_Cost.ToString();
 
-                Total_Cost_VAT = Total_Cost * 1.05;
+                Total_Cost_VAT = Total_Cost * 1.2;
                 String_VAT = "Total Cost With VAT = £" + Total_Cost_VAT.ToString();
 
                 DateTime Date = DateTime.Today;
@@ -531,10 +552,12 @@ namespace Paint_Calculator
             else
             {
                 StreamWriter A = new StreamWriter(Application.StartupPath + "\\form\\" + "Paint_Details.txt");
-                A.WriteLine(textBox5.Text);
-                A.WriteLine(textBox6.Text);
-                A.WriteLine(textBox7.Text);
-                A.WriteLine(textBox8.Text);
+                A.WriteLine(textBox5.Text); //Small Paint Size
+                A.WriteLine(textBox6.Text); //Small paint Trade Price
+                A.WriteLine(textBox10.Text); //Small paint Dom Price
+                A.WriteLine(textBox7.Text); //large Paint size
+                A.WriteLine(textBox8.Text); //Large Paint Trade Price
+                A.WriteLine(textBox9.Text); //Large paint Dom Price
 
                 A.Close();
             }
@@ -566,6 +589,18 @@ namespace Paint_Calculator
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                label9.Text = "Enabled";
+            }
+            else
+            {
+                label9.Text = "Disabled";
             }
         }
     }

@@ -342,6 +342,7 @@ namespace Paint_Calculator
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(95, 41);
             this.textBox5.TabIndex = 26;
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
             // 
             // label3
             // 
@@ -370,6 +371,7 @@ namespace Paint_Calculator
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(95, 41);
             this.textBox6.TabIndex = 29;
+            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // textBox7
             // 
@@ -378,6 +380,7 @@ namespace Paint_Calculator
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(95, 41);
             this.textBox7.TabIndex = 33;
+            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
             // 
             // label5
             // 
@@ -406,6 +409,7 @@ namespace Paint_Calculator
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(95, 41);
             this.textBox8.TabIndex = 30;
+            this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox8_KeyPress);
             // 
             // button20
             // 

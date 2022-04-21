@@ -448,7 +448,7 @@ namespace Paint_Calculator
                     if (Var_Litres > Convert.ToDouble(Big_Paint_Size))
                     {
                         Big_Paint_Counter++;
-                        Var_Litres = Var_Litres - 5;
+                        Var_Litres = Var_Litres - Convert.ToDouble(Big_Paint_Size);
                         //get big paint
                     }
                     else if (Var_Litres < Convert.ToDouble(Big_Paint_Size))
@@ -492,7 +492,7 @@ namespace Paint_Calculator
                 String_VAT = "Total Cost With VAT = £" + Total_Cost_VAT.ToString();
 
                 DateTime Date = DateTime.Today;
-                MessageBox.Show(Company_Name + "\n" + Company_Address + "\n" + Small_Paint + "\n" + Big_Paint + Str_Litres + "\n" + String_Cost + "\n" + String_VAT + "\n" + Date, Title);
+                MessageBox.Show(Company_Name + "\n" + Company_Address + "\n" + Small_Paint + "\n" + Big_Paint + "\n" + Str_Litres + "\n" + String_Cost + "\n" + String_VAT + "\n" + Date, Title);
             }
         }
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)

@@ -307,7 +307,7 @@ namespace Paint_Calculator
             // button19
             // 
             this.button19.Font = new System.Drawing.Font("Javanese Text", 11F);
-            this.button19.Location = new System.Drawing.Point(412, 316);
+            this.button19.Location = new System.Drawing.Point(450, 316);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(94, 41);
             this.button19.TabIndex = 23;
@@ -321,14 +321,14 @@ namespace Paint_Calculator
             this.label2.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(171, 319);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 34);
+            this.label2.Size = new System.Drawing.Size(172, 34);
             this.label2.TabIndex = 24;
-            this.label2.Text = "Insert surface area:";
+            this.label2.Text = "Insert surface area (m²):";
             // 
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Javanese Text", 11F);
-            this.textBox4.Location = new System.Drawing.Point(311, 316);
+            this.textBox4.Location = new System.Drawing.Point(349, 316);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(95, 41);
             this.textBox4.TabIndex = 25;

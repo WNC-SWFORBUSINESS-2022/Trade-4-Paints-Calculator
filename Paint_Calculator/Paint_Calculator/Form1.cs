@@ -28,7 +28,7 @@ namespace Paint_Calculator
         int Current_Section_Unit = 0; // (0 - 3)
 
         //Library
-        string[] Unit_Values = { "mm", "cm", "m", "km", "miles" }; // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
+        string[] Unit_Values = { "mm", "cm", "Meters", "Km", "Miles", "Foot" }; // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
         string[] L_Operators = { "+", "-", "*", "/" };
 
         int Cycle = 0; // Cycles what Unit the user wants
@@ -341,6 +341,9 @@ namespace Paint_Calculator
                         break;
                     case 4:
                         Input_Numbers[i] = Input_Numbers[i] * 1609.34; // mile to meter
+                        break;
+                    case 5:
+                        Input_Numbers[i] = Input_Numbers[i] * 0.3048; // feet to meter
                         break;
                     default:
                         //add text to tell the user to input something :P

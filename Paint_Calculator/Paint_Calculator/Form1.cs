@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace Paint_Calculator
@@ -39,8 +40,13 @@ namespace Paint_Calculator
         String Str_Litres;
         int Big_Paint_Counter = 0;
         int Small_Paint_Counter = 0;
-        Double Small_Paint_Cost;
-        Double Big_Paint_Cost;
+        Double Small_Paint_Cost_Total;
+        Double Big_Paint_Cost_Total;
+
+        String Small_Paint_Size;
+        String Small_Paint_Cost;
+        String Big_Paint_Size;
+        String Big_Paint_Cost;
 
         //Recipt
         String Company_Name = "Trade4Paint";
@@ -166,6 +172,21 @@ namespace Paint_Calculator
         public Form1()
         {
             InitializeComponent();
+            String path = Application.StartupPath + "\\form\\" + "Paint_Details.txt";
+            using (StreamReader sr = new StreamReader(path))
+            {
+                Small_Paint_Size = sr.ReadLine(); // loads up the txt document and saves them as diffrent var
+                textBox5.Text = Small_Paint_Size;
+
+                Small_Paint_Cost = sr.ReadLine();
+                textBox6.Text = Small_Paint_Cost;
+
+                Big_Paint_Size = sr.ReadLine();
+                textBox7.Text = Big_Paint_Size;
+
+                Big_Paint_Cost = sr.ReadLine();
+                textBox8.Text = Big_Paint_Cost;
+            }
         } 
         
         // Holds the main numerical inputs (Includes Decimal)
@@ -393,9 +414,25 @@ namespace Paint_Calculator
             Big_Paint_Counter = 0;
             Small_Paint_Counter = 0;
 
-            Small_Paint_Cost = 0;
-            Big_Paint_Cost = 0;
-            
+            Small_Paint_Cost_Total = 0;
+            Big_Paint_Cost_Total = 0;
+
+            String path = Application.StartupPath + "\\form\\" + "Paint_Details.txt";
+            using (StreamReader sr = new StreamReader(path))
+            {
+                Small_Paint_Size = sr.ReadLine(); // loads up the txt document and saves them as diffrent var
+                textBox5.Text = Small_Paint_Size;
+
+                Small_Paint_Cost = sr.ReadLine();
+                textBox6.Text = Small_Paint_Cost;
+
+                Big_Paint_Size = sr.ReadLine();
+                textBox7.Text = Big_Paint_Size;
+
+                Big_Paint_Cost = sr.ReadLine();
+                textBox8.Text = Big_Paint_Cost;
+            }
+
             if (String.IsNullOrEmpty(textBox4.Text))
             {
                 //send error
@@ -408,22 +445,22 @@ namespace Paint_Calculator
 
                 while (Empty_Check == false)
                 {
-                    if (Var_Litres > 8)
+                    if (Var_Litres > Convert.ToDouble(Big_Paint_Size))
                     {
                         Big_Paint_Counter++;
                         Var_Litres = Var_Litres - 5;
                         //get big paint
                     }
-                    else if (Var_Litres < 8)
+                    else if (Var_Litres < Convert.ToDouble(Big_Paint_Size))
                     {
-                        if (Var_Litres > 4)
+                        if (Var_Litres > Convert.ToDouble(Small_Paint_Size))
                         {
                             Big_Paint_Counter++;
                             Var_Litres = 0;
                             Empty_Check = true;
                             // get big paint
                         }
-                        else if (Var_Litres < 4)
+                        else if (Var_Litres < Convert.ToDouble(Small_Paint_Size))
                         {
                             if (Var_Litres == 0)
                             {
@@ -440,13 +477,15 @@ namespace Paint_Calculator
                     }
                 }
 
-                Small_Paint_Cost = Small_Paint_Counter * 18.99;
-                Big_Paint_Cost = Big_Paint_Counter * 28;
+                
+
+                Small_Paint_Cost_Total = Small_Paint_Counter * Convert.ToDouble(Small_Paint_Cost);
+                Big_Paint_Cost_Total = Big_Paint_Counter * Convert.ToDouble(Small_Paint_Cost);
 
                 Small_Paint = "Small Paint X " + Small_Paint_Counter.ToString();
                 Big_Paint = "Big Paint x " + Big_Paint_Counter.ToString();
 
-                Total_Cost = Big_Paint_Cost + Small_Paint_Cost;
+                Total_Cost = Big_Paint_Cost_Total + Small_Paint_Cost_Total;
                 String_Cost = "Total Cost = £" + Total_Cost.ToString();
 
                 Total_Cost_VAT = Total_Cost * 1.05;
@@ -461,6 +500,40 @@ namespace Paint_Calculator
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBox5.Text))
+            {
+                //send error
+                MessageBox.Show("Please Insert a Value");
+            }
+            else if (String.IsNullOrEmpty(textBox6.Text))
+            {
+                //send error
+                MessageBox.Show("Please Insert a Value");
+            }
+            else if (String.IsNullOrEmpty(textBox7.Text))
+            {
+                //send error
+                MessageBox.Show("Please Insert a Value");
+            }
+            else if (String.IsNullOrEmpty(textBox8.Text))
+            {
+                //send error
+                MessageBox.Show("Please Insert a Value");
+            }
+            else
+            {
+                StreamWriter A = new StreamWriter(Application.StartupPath + "\\form\\" + "Paint_Details.txt");
+                A.WriteLine(textBox5.Text);
+                A.WriteLine(textBox6.Text);
+                A.WriteLine(textBox7.Text);
+                A.WriteLine(textBox8.Text);
+
+                A.Close();
             }
         }
     }

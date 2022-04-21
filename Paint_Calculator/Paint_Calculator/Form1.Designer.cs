@@ -55,6 +55,15 @@ namespace Paint_Calculator
             this.button19 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button20 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -322,11 +331,104 @@ namespace Paint_Calculator
             this.textBox4.TabIndex = 25;
             this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
+            // textBox5
+            // 
+            this.textBox5.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.textBox5.Font = new System.Drawing.Font("Javanese Text", 11F);
+            this.textBox5.Location = new System.Drawing.Point(518, 46);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(95, 41);
+            this.textBox5.TabIndex = 26;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(512, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(116, 34);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Small Paint Size";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(512, 90);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 34);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Small Paint Price";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Javanese Text", 11F);
+            this.textBox6.Location = new System.Drawing.Point(518, 127);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(95, 41);
+            this.textBox6.TabIndex = 29;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Font = new System.Drawing.Font("Javanese Text", 11F);
+            this.textBox7.Location = new System.Drawing.Point(640, 46);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(95, 41);
+            this.textBox7.TabIndex = 33;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(634, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(124, 34);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Large Paint Price";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(634, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 34);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Large Paint Size";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("Javanese Text", 11F);
+            this.textBox8.Location = new System.Drawing.Point(640, 127);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(95, 41);
+            this.textBox8.TabIndex = 30;
+            // 
+            // button20
+            // 
+            this.button20.Font = new System.Drawing.Font("Javanese Text", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button20.Location = new System.Drawing.Point(579, 174);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(94, 41);
+            this.button20.TabIndex = 34;
+            this.button20.Text = "Save";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 369);
+            this.ClientSize = new System.Drawing.Size(795, 369);
+            this.Controls.Add(this.button20);
+            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button19);
@@ -387,6 +489,15 @@ namespace Paint_Calculator
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Button button20;
     }
 }
 

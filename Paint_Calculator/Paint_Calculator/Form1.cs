@@ -17,9 +17,8 @@ namespace Paint_Calculator
         #region Variables
         List<int> Input_Type = new List<int>(); // Holds the more complex information: numbers = 0, method = 1, Unit = 2, Calculating = 3; can then be used for visual translation
 
-        List<Double> Input_Numbers = new List<Double>(); // Holds the Numeric values
-        List<int> Input_Units = new List<int>(); // Holds more specific information for Units (0 - 3)
-        List<Double> Input_Operators = new List<Double>(); // Holds more specific information for Methods(0 - 3)
+        Double[] Input_Numbers = {0,0}; // Holds the Numeric values
+         List<int> Input_Units = new List<int>();// Holds more specific information for Units (0 - 3)
 
         Double Section = 0; // Numbers and Operators fight for this variable
 
@@ -28,10 +27,9 @@ namespace Paint_Calculator
         int Current_Section_Unit = 0; // (0 - 3)
 
         //Library
-        string[] Unit_Values = { "mm", "cm", "Meters", "Km", "Miles", "Foot" }; // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
-        string[] L_Operators = { "+", "-", "*", "/" };
-
-        int Cycle = 0; // Cycles what Unit the user wants
+        string[] Unit_Values = {"Meters", "Foot"}; // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
+        int Cycle_1 = 0;
+        int Cycle_2 = 0;// Cycles what Unit the user wants
         bool Decimal_Enable = false;
         
         //Calculation for paint
@@ -62,113 +60,8 @@ namespace Paint_Calculator
         String Title = "Recipt";
         #endregion
 
-        #region Functions
-        public void Number(Double x)
-        {
-            if (Current_Section_Type == 1) // Doesn't like Numbers
-            {
-                Input_Type.Add(1); // Adds Operator to type list be fore replacing it with Number type
-                Input_Operators.Add(Section); // Adds the Operator to the Operator list
-
-                Current_Section_Type = 0;
-                Section = x;
-
-                textBox1_Update(); // Run update for text box
-                textBox2.Text = Section.ToString() + Unit_Values[Current_Section_Unit];
-            }
-            else if (Decimal_Enable == true)
-            {
-                Section = Double.Parse(Section.ToString() + '.' + x.ToString());
-                Decimal_Enable = false;
-                textBox2.Text = Section.ToString() + Unit_Values[Current_Section_Unit];
-            }
-            else
-            {
-                Section = Double.Parse(Section.ToString() + x.ToString()); // inputs number;
-                textBox2.Text = Section.ToString() + Unit_Values[Current_Section_Unit];
-            }
-        }
-
-        public void Operation(int x)
-        {
-            if (Current_Section_Type == 0) // Doesn't like Operators
-            {
-                Input_Type.Add(0); // add numbers to type list be fore replacing it with Operator type
-                Input_Numbers.Add(Section); // add numbers to the visual list
-
-                Input_Type.Add(2); // Adds the Unit type to the list
-                Input_Units.Add(Current_Section_Unit); // adds the specific unit to the list
-
-                Current_Section_Type = 1; // Finally does the Operator
-                Section = (x);
-                textBox2.Text = L_Operators[Convert.ToInt32(Section)];
-
-                textBox1_Update();
-            }
-            else
-            {
-                Section = (x);
-                textBox2.Text = L_Operators[Convert.ToInt32(Section)];
-            }
-        }
-
-        public void Unit(int x)
-        {
-            Current_Section_Unit = x;
-            button11.Text = Unit_Values[x];
-            textBox2.Text = Section.ToString() + Unit_Values[Current_Section_Unit];
-        }
 
 
-        public void textBox1_Update()
-        {
-            int Length = Input_Type.Count(); // Calculate the length of the list
-
-            string Display = "";
-
-            int Number_Count = 0;
-            int Operator_Count = 0;
-            int Unit_Count = 0;
-            
-            for (int i = 0; i < Length; i++)
-            {
-                switch (Input_Type[i])
-                {
-                    case 0: // Numerals
-                        Display = Display + Input_Numbers[Number_Count];
-                        Number_Count = Number_Count + 1;
-                        break;
-                                             
-                    case 1: // Operators
-                        Display = Display + L_Operators[Convert.ToInt32(Input_Operators[Operator_Count])];
-                        Operator_Count = Operator_Count + 1;
-                        break;
-                                             
-                    case 2: // Units
-                        Display = Display + Unit_Values[Convert.ToInt32(Input_Units[Unit_Count])];
-                        Unit_Count = Unit_Count + 1;
-                        break;
-
-                    default:
-                        // Nothing
-                        break;
-                }
-            }
-            textBox1.Text = Display;
-        }
-
-        public void Reset_Values()
-        {
-            Input_Type.Clear();
-            
-            Input_Numbers.Clear();
-            Input_Units.Clear();
-            Input_Operators.Clear();
-
-            Section = 0;
-            Current_Section_Type = 0;
-        }
-        #endregion
 
         //ignore for now
         public Form1()
@@ -197,123 +90,35 @@ namespace Paint_Calculator
             }
         } 
         
-        // Holds the main numerical inputs (Includes Decimal)
-        #region Number Input
         private void button1_Click(object sender, EventArgs e)
         {
-            Number(1);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Number(2);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Number(3);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Number(4);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Number(5);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Number(6);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Number(7);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Number(8);
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Number(9);
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            Number(0);
-        }
-        
-        // Decimal
-        private void button16_Click(object sender, EventArgs e)
-        {
-            if (Current_Section_Type == 0)
+            if (Cycle_1 == Unit_Values.Count() - 1)
             {
-                if (Decimal_Enable == true)
-                    {
-                        Decimal_Enable = false;
-                    }
-                else
-                    {
-                        Decimal_Enable = true;
-                    }
-            }
-        }
-        #endregion
-
-        // Change Unit
-        private void button11_Click(object sender, EventArgs e)
-        {
-            if (Cycle == Unit_Values.Count() - 1)
-            {
-                Cycle = 0;
+                Cycle_1 = 0;
             }
             else
             {
-                Cycle = Cycle + 1;
+                Cycle_1 = Cycle_1 + 1;
             }
-            Unit(Cycle);
+
+            button1.Text = Unit_Values[Cycle_1];
         }
-        
-        // Operators, Duh... (holds the inputs for operations like additon or division)
-        #region Operators
-        // Plus
-        private void button12_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            Operation(0);
+            if (Cycle_2 >= Unit_Values.Count() - 1)
+            {
+                Cycle_2 = 0;
+            }
+            else
+            {
+                Cycle_2++;
+            }
+            button2.Text = Unit_Values[Cycle_2];
         }
-
-        // Minus
-        private void button13_Click(object sender, EventArgs e)
+        public void Unit(int x)
         {
-            Operation(1);
+            
         }
-
-        // Times
-        private void button14_Click(object sender, EventArgs e)
-        {
-            Operation(2);
-        }
-
-        // Division
-        private void button15_Click(object sender, EventArgs e)
-        {
-            Operation(3);
-        }
-
-        #endregion
-
-        // Reset (resets averything before User Input (Ignoring Unit))
-        private void button17_Click(object sender, EventArgs e)
-        {
-            Reset_Values();
-        }
-
         // The actuial Calculation...
         private void button18_Click(object sender, EventArgs e)
         {
@@ -321,101 +126,41 @@ namespace Paint_Calculator
             Double Results = 0;
 
             // Adds the inputed number (if there is any)
-            if (Current_Section_Type == 0) // Number
+            if (String.IsNullOrEmpty(textBox1.Text)|| String.IsNullOrEmpty(textBox2.Text))
             {
-                Input_Type.Add(0); // add numbers to type list be fore replacing it with Operator type
-                Input_Numbers.Add(Section); // add numbers to the visual list
-
-                Input_Type.Add(2); // Adds the Unit type to the list
-                Input_Units.Add(Current_Section_Unit); // adds the specific unit to the list
+                //error
             }
-
-            // Converting the number
-            for (int i = 0; i <= (Input_Units.Count - 1); i++) // Extchange Rates to a Meter, mm = / 1000, cm = / 100, m = x 1, km = x 1000, mile = x 1609.34
+            else
             {
-                switch(Input_Units[i]) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
+                // Converting the number
+                switch (Cycle_1) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
                 {
                     case 0:
-                        Input_Numbers[i] = Input_Numbers[i] / 1000; // millimeter to meter
+                        Input_Numbers[0] = Convert.ToDouble(textBox1.Text); // meter to meter
                         break;
                     case 1:
-                        Input_Numbers[i] = Input_Numbers[i] / 100; // centimeter to meter
-                        break;
-                    case 2:
-                        Input_Numbers[i] = Input_Numbers[i] * 1; // meter to meter 
-                        break;
-                    case 3:
-                        Input_Numbers[i] = Input_Numbers[i] * 1000; // kilometer to meter
-                        break;
-                    case 4:
-                        Input_Numbers[i] = Input_Numbers[i] * 1609.34; // mile to meter
-                        break;
-                    case 5:
-                        Input_Numbers[i] = Input_Numbers[i] * 0.3048; // feet to meter
+                        Input_Numbers[0] = Convert.ToDouble(textBox1.Text) * 0.3048; // feet to meter
                         break;
                     default:
                         //add text to tell the user to input something :P
                         break;
                 }
-            }
-
-
-            for (int i = 0; i <= (Input_Operators.Count - 1); i++) // counting how many times it needs to calculate
-            {
-                switch (Input_Operators[i])
+                switch (Cycle_2) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
                 {
-                    case 0: // +
-                        if (Inital_Calculation == true) // The Inital Calculation Is Special
-                        {
-                            Inital_Calculation = false;
-
-                            Results = Input_Numbers[i] + Input_Numbers[i + 1];
-                        }
-                        else
-                        {
-                            Results = Results + Input_Numbers[i + 1];
-                        }
+                    case 0:
+                        Input_Numbers[1] = Convert.ToDouble(textBox2.Text); // meter to meter
                         break;
-                    case 1: // -
-                        if (Inital_Calculation == true)
-                        {
-                            Inital_Calculation = false;
-
-                            Results = Input_Numbers[i] - Input_Numbers[i + 1];
-                        }
-                        else
-                        {
-                            Results = Results - Input_Numbers[i + 1];
-                        }
+                    case 1:
+                        Input_Numbers[1] = Convert.ToDouble(textBox2.Text) * 0.3048; // feet to meter
                         break;
-                    case 2: // *
-                        if (Inital_Calculation == true)
-                        {
-                            Inital_Calculation = false;
-
-                            Results = Input_Numbers[i] * Input_Numbers[i + 1];
-                        }
-                        else
-                        {
-                            Results = Results * Input_Numbers[i + 1];
-                        }
-                        break;
-                    case 3: // %
-                        if (Inital_Calculation == true)
-                        {
-                            Inital_Calculation = false;
-
-                            Results = Input_Numbers[i] / Input_Numbers[i + 1];
-                        }
-                        else
-                        {
-                            Results = Results / Input_Numbers[i + 1];
-                        }
+                    default:
+                        //add text to tell the user to input something :P
                         break;
                 }
+
+                Results = Input_Numbers[0] * Input_Numbers[1];
+                textBox4.Text = Results.ToString();
             }
-            Reset_Values();
-            textBox3.Text = Results.ToString() + " m";
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -529,22 +274,7 @@ namespace Paint_Calculator
 
         private void button20_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBox5.Text))
-            {
-                //send error
-                MessageBox.Show("Please Insert a Value");
-            }
-            else if (String.IsNullOrEmpty(textBox6.Text))
-            {
-                //send error
-                MessageBox.Show("Please Insert a Value");
-            }
-            else if (String.IsNullOrEmpty(textBox7.Text))
-            {
-                //send error
-                MessageBox.Show("Please Insert a Value");
-            }
-            else if (String.IsNullOrEmpty(textBox8.Text))
+            if (String.IsNullOrEmpty(textBox5.Text)|| String.IsNullOrEmpty(textBox6.Text)|| String.IsNullOrEmpty(textBox7.Text)|| String.IsNullOrEmpty(textBox8.Text))
             {
                 //send error
                 MessageBox.Show("Please Insert a Value");
@@ -601,6 +331,22 @@ namespace Paint_Calculator
             else
             {
                 label9.Text = "Disabled";
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
             }
         }
     }

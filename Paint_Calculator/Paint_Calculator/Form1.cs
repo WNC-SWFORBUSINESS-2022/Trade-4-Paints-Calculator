@@ -67,6 +67,8 @@ namespace Paint_Calculator
         public Form1()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
             String path = Application.StartupPath + "\\form\\" + "Paint_Details.txt";
             using (StreamReader sr = new StreamReader(path))
             {
@@ -90,31 +92,6 @@ namespace Paint_Calculator
             }
         } 
         
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (Cycle_1 == Unit_Values.Count() - 1)
-            {
-                Cycle_1 = 0;
-            }
-            else
-            {
-                Cycle_1 = Cycle_1 + 1;
-            }
-
-            button1.Text = Unit_Values[Cycle_1];
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (Cycle_2 >= Unit_Values.Count() - 1)
-            {
-                Cycle_2 = 0;
-            }
-            else
-            {
-                Cycle_2++;
-            }
-            button2.Text = Unit_Values[Cycle_2];
-        }
         public void Unit(int x)
         {
             
@@ -133,7 +110,7 @@ namespace Paint_Calculator
             else
             {
                 // Converting the number
-                switch (Cycle_1) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
+                switch (comboBox1.SelectedIndex) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
                 {
                     case 0:
                         Input_Numbers[0] = Convert.ToDouble(textBox1.Text); // meter to meter
@@ -203,7 +180,7 @@ namespace Paint_Calculator
             else
             {
                 Var_Litres = Convert.ToDouble(textBox4.Text) / 1.625; // the number of litres needed
-                Str_Litres = "Litres = " + Var_Litres.ToString() + "L";
+                Str_Litres = "Litres = " + Math.Round(Var_Litres,2).ToString() + "L";
 
                 while (Empty_Check == false)
                 {
@@ -254,10 +231,10 @@ namespace Paint_Calculator
                 Small_Paint = "Small Paint X " + Small_Paint_Counter.ToString();
                 Big_Paint = "Big Paint x " + Big_Paint_Counter.ToString();
 
-                Total_Cost = Big_Paint_Cost_Total + Small_Paint_Cost_Total;
+                Total_Cost = Math.Round((Big_Paint_Cost_Total + Small_Paint_Cost_Total),2);
                 String_Cost = "Total Cost = £" + Total_Cost.ToString();
 
-                Total_Cost_VAT = Total_Cost * 1.2;
+                Total_Cost_VAT = Math.Round((Total_Cost * 1.2),2);
                 String_VAT = "Total Cost With VAT = £" + Total_Cost_VAT.ToString();
 
                 DateTime Date = DateTime.Today;
@@ -319,6 +296,7 @@ namespace Paint_Calculator
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
+                textBox8.Text = Convert.ToString(Math.Round(Convert.ToDouble(textBox8.Text), 2));
             }
         }
 
@@ -348,6 +326,43 @@ namespace Paint_Calculator
             {
                 e.Handled = true;
             }
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox9_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+                
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -58,6 +58,25 @@ namespace Paint_Calculator
         Double Total_Cost_VAT;
         String String_VAT;
         String Title = "Recipt";
+
+        //colour blind mode
+        int Colour_State = 0;
+
+        int Background_R;
+        int Background_G;
+        int Background_B;
+
+        int Text_R;
+        int Text_G;
+        int Text_B;
+
+        int TextBox_Background_R;
+        int TextBox_Background_G;
+        int TextBox_Background_B;
+
+        int Button_Background_R;
+        int Button_Background_G;
+        int Button_Background_B;
         #endregion
 
 
@@ -122,7 +141,7 @@ namespace Paint_Calculator
                         //add text to tell the user to input something :P
                         break;
                 }
-                switch (Cycle_2) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
+                switch (comboBox2.SelectedIndex) // to add more numbers just add the unit of mesurement name into the list and add the calculation here as a new case
                 {
                     case 0:
                         Input_Numbers[1] = Convert.ToDouble(textBox2.Text); // meter to meter
@@ -363,6 +382,112 @@ namespace Paint_Calculator
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        //colour blind button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            switch (Colour_State)
+            {
+                case 0:
+                    Background_R = 0;
+                    Background_G = 0;
+                    Background_B = 0;
+
+                    Text_R = 255;
+                    Text_G = 255;
+                    Text_B = 255;
+
+                    TextBox_Background_R = 0;
+                    TextBox_Background_G = 0;
+                    TextBox_Background_B = 0;
+
+                    Button_Background_R = 0;
+                    Button_Background_G = 0;
+                    Button_Background_B = 0;
+
+                    Colour_State = 1;
+                    button1.Text = "Colour blind mode : On";
+                    break;
+                case 1:
+                    Background_R = 190;
+                    Background_G = 211;
+                    Background_B = 240;
+
+                    Text_R = 15;
+                    Text_G = 124;
+                    Text_B = 241;
+
+                    TextBox_Background_R = 255;
+                    TextBox_Background_G = 255;
+                    TextBox_Background_B = 255;
+
+                    Button_Background_R = 224;
+                    Button_Background_G = 224;
+                    Button_Background_B = 224;
+
+                    Colour_State = 0;
+                    button1.Text = "Colour blind mode : Off";
+                    break;
+            }
+            
+            BackColor = Color.FromArgb(Background_R, Background_G, Background_B);
+
+            // Label Font colours
+            label1.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            label2.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            label3.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            label4.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            label5.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            label6.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            label7.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            label8.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            label9.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            label10.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+
+            // Textbox Background
+            textBox1.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+            textBox2.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+            textBox4.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+            textBox5.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+            textBox6.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+            textBox7.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+            textBox8.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+            textBox9.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+            textBox10.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+
+            // Textbox Fonts
+            textBox1.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            textBox2.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            textBox4.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            textBox5.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            textBox6.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            textBox7.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            textBox8.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            textBox9.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            textBox10.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+
+            // Button Background
+            button1.BackColor = Color.FromArgb(Button_Background_R, Button_Background_G, Button_Background_B);
+            button18.BackColor = Color.FromArgb(Button_Background_R, Button_Background_G, Button_Background_B);
+            button19.BackColor = Color.FromArgb(Button_Background_R, Button_Background_G, Button_Background_B);
+            button20.BackColor = Color.FromArgb(Button_Background_R, Button_Background_G, Button_Background_B);
+            checkBox1.BackColor = Color.FromArgb(Button_Background_R, Button_Background_G, Button_Background_B);
+
+            // Button Fonts
+            button1.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            button18.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            button19.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            button20.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            checkBox1.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+
+            // Combobox Background
+            comboBox1.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+            comboBox2.BackColor = Color.FromArgb(TextBox_Background_R, TextBox_Background_G, TextBox_Background_B);
+
+            // Combobox Fonts
+            comboBox1.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
+            comboBox2.ForeColor = Color.FromArgb(Text_R, Text_G, Text_B);
         }
     }
 }
